@@ -6,7 +6,8 @@ import java.util.Date;
 
 public class AccessLog {
     private String ip;
-    private SimpleDateFormat formatter;
+    private SimpleDateFormat formatterInPut;
+    private SimpleDateFormat formatterOutPut;
     private Date date;
     private String info;
     private int httpResponseCode;
@@ -14,7 +15,8 @@ public class AccessLog {
     private String info2;
 
     public AccessLog(){
-        formatter = new SimpleDateFormat("dd/MM/y:HH:mm:ss Z");
+        formatterInPut = new SimpleDateFormat("dd/MM/y:HH:mm:ss Z");
+        formatterOutPut = new SimpleDateFormat("HH:mm:ss");
         date = new Date();
     }
 
@@ -26,12 +28,12 @@ public class AccessLog {
         this.ip = ip;
     }
 
-    public SimpleDateFormat getFormatter() {
-        return formatter;
+    public SimpleDateFormat getFormatterOutPut() {
+        return formatterOutPut;
     }
 
-    public void setFormatter(SimpleDateFormat formatter) {
-        this.formatter = formatter;
+    public void setFormatterOutPut(SimpleDateFormat formatter) {
+        this.formatterOutPut = formatter;
     }
 
     public Date getDate() {
@@ -39,7 +41,7 @@ public class AccessLog {
     }
 
     public void setDate(String dateStr) throws ParseException {
-        this.date = formatter.parse(dateStr);
+        this.date = formatterInPut.parse(dateStr);
     }
 
     public String getInfo() {
@@ -72,5 +74,13 @@ public class AccessLog {
 
     public void setInfo2(String info2) {
         this.info2 = info2;
+    }
+
+    public SimpleDateFormat getFormatterInPut() {
+        return formatterInPut;
+    }
+
+    public void setFormatterInPut(SimpleDateFormat formatterInPut) {
+        this.formatterInPut = formatterInPut;
     }
 }
